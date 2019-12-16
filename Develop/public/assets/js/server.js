@@ -47,14 +47,14 @@ app.post("/api/notes", function (req, res) {
         notes.push(newNote)
         for (let i = 0; i < notes.length; i++) {
             note = notes[i]
-            note.id = i
+            note.id = i + 1
         }
         fs.writeFile(jsonFile, JSON.stringify(notes), function (err) {
 
             if (err) {
                 return console.log(err);
             }
-            console.log("ADDED!");
+            console.log("ADDED NEW NOTE!");
         });
 
     }
@@ -79,20 +79,20 @@ app.delete("/api/notes/:id", function (req, res) {
     } getJsonFile()
 
     function deleteJsonFile() {
-        notes.splice(id, 1);
-        for (let i = 0; i < notes.length; i++) {
-            note = notes[i]
-            note.id = i
-        }
+        notes.splice(id-1, 1);
         writeFile();
     }
 
     function writeFile() {
+        for (let i = 0; i < notes.length; i++) {
+            note = notes[i]
+            note.id = i + 1
+        }
         fs.writeFile(jsonFile, JSON.stringify(notes), function (err) {
             if (err) {
                 return console.log(err);
             }
-            console.log("DELETED!");
+            console.log("REWRITING FILE");
         });
     }
     res.sendFile(path.join(__dirname, "../../../db/db.json"));
