@@ -9,54 +9,54 @@ let notes = [];
 
 app.use(express.static('public'))
 
+//Home page
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../../index.html"));
 });
 
+//Notes page
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "../../notes.html"));
 });
 
+//Gets the notes from the db.json file
 app.get("/api/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "../../../db/db.json"));
 });
 
+//saves the information on the page to the db.json file (still working on this)
 app.post("/api/notes", function(req, res) {
-    notes 
+    jsonFile = path.join(__dirname, "../../../db/db.json");
+    newNote = req;
+    console.log(newNote);
 
-    fs.readFile("../../../db/db.json", function(error, data) {
+    //gets the JSON file and saves it to the "notes variable"
+   function getJsonFile(){
+       fs.readFile(jsonFile, "utf8", function(error, response) {
+           if (error) {
+               console.log(error);
+            }
+            notes = JSON.parse(response)
+            // notes.push(newNote)
+            writeJsonFile();
+        });
+    } getJsonFile()
 
-        if (error) {
-          return console.log(error);
-        }
-      
-        console.log(data);
-      
-      });
-      
+    //re-writes the db.json file with the notes variable
+    function writeJsonFile(){
+        fs.writeFile(jsonFile, JSON.stringify(notes), function(err) {
 
-    console.log(notes);
+            if (err) {
+              return console.log(err);
+            }
+          
+            console.log("Success!");
+          
+          });
+          
+    }
+});
 
-
-
-
-
-    // notes.push(newNote)
-    // console.log(notes)
-
-
-
-
-    // fs.writeFile(path.join(__dirname, "../../../db/db.json"), `${JSON.parse(notes)}`, function (err) {
-
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    
-    //     console.log("Success!");
-    
-    // });
-})
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
