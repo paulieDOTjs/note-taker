@@ -79,7 +79,7 @@ app.delete("/api/notes/:id", function (req, res) {
     } getJsonFile()
 
     function deleteJsonFile() {
-        notes.splice(id-1, 1);
+        notes.splice(id - 1, 1);
         writeFile();
     }
 
