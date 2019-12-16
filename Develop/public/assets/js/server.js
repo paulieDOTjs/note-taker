@@ -80,6 +80,10 @@ app.delete("/api/notes/:id", function (req, res) {
 
     function deleteJsonFile() {
         notes.splice(id, 1);
+        for (let i = 0; i < notes.length; i++) {
+            note = notes[i]
+            note.id = i
+        }
         writeFile();
     }
 
