@@ -13,22 +13,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Home page
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../index.html"));
+    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 //Notes page
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../notes.html"));
+    res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
 //Gets the notes from the db.json file
 app.get("/api/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "../../../db/db.json"));
+    res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
 //saves the information on the page to the db.json file (still working on this)
 app.post("/api/notes", function (req, res) {
-    jsonFile = path.join(__dirname, "../../../db/db.json");
+    jsonFile = path.join(__dirname, "/db/db.json");
     newNote = req.body;
 
     //gets the JSON file and saves it to the "notes variable"
@@ -58,7 +58,7 @@ app.post("/api/notes", function (req, res) {
         });
 
     }
-    res.sendFile(path.join(__dirname, "../../../db/db.json"));
+    res.sendFile(path.join(__dirname, "/db/db.json"));
 
 });
 
@@ -67,7 +67,7 @@ app.delete("/api/notes/:id", function (req, res) {
 
     id = (req.params.id)
 
-    jsonFile = path.join(__dirname, "../../../db/db.json");
+    jsonFile = path.join(__dirname, "/db/db.json");
     function getJsonFile() {
         fs.readFile(jsonFile, "utf8", function (error, response) {
             if (error) {
@@ -95,7 +95,7 @@ app.delete("/api/notes/:id", function (req, res) {
             console.log("REWRITING FILE");
         });
     }
-    res.sendFile(path.join(__dirname, "../../../db/db.json"));
+    res.sendFile(path.join(__dirname, "/db/db.json"));
 });
 
 app.listen(PORT, function () {
