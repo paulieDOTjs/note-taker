@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 let notes = [];
 
+//Lets express start working
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -83,6 +84,7 @@ app.delete("/api/notes/:id", function (req, res) {
         writeFile();
     }
 
+    //Rewrites file with note now deleted.
     function writeFile() {
         for (let i = 0; i < notes.length; i++) {
             note = notes[i]
