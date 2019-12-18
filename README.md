@@ -10,6 +10,9 @@ Note Taker app used used for practice on node express server, and Heroku depoloy
 https://paulie-note-taker.herokuapp.com/
 
 #Images
+
+
+
 ![Gif of working app](https://github.com/paulrobhendrickson/note-taker/blob/master/public/assets/images/NoteTaker.gif?raw=true)
 
 ![Home page screenshot](https://github.com/paulrobhendrickson/note-taker/blob/master/public/assets/images/Screen%20Shot%202019-12-18%20at%208.37.02%20AM.png?raw=true)
