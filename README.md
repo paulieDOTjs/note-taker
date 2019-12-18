@@ -9,7 +9,7 @@ Note Taker app used used for practice on node express server, and Heroku depoloy
 # Live App
 https://paulie-note-taker.herokuapp.com/
 
-#Images
+# Images
 
 
 
@@ -35,5 +35,5 @@ Triology Education Services created the front end of the site, for my homework a
 # Challenges
 The biggest challenge was finding the necessary tools to access the public directory, since it was something I had never dealt with before. Also, experienced an issue where items that had the ID 0 could not be viewed by JQUERY.
 
-#License
+# License
 MIT
